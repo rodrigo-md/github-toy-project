@@ -1,0 +1,19 @@
+{
+  "name": "github-toy-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rodrigo-md/github-toy-project.git",
+  "author": "Rodrigo Martinez <rodrigo.martinez.diaz@autodesk.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "jest": {
+    "coverageReporters": ["text", "json", "json-summary"]
+  },
+  "devDependencies": {
+    "@jest/globals": "^27.5.1",
+    "jest": "^27.5.1"
+  }
+}
