@@ -16,3 +16,18 @@ jobs:
           node-version: 16.x
       - run: yarn install
       - run: yarn coverage
+      - uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/coverage-summary.json
+      - uses: rodrigo-md/pull-request-visualizer-action@testing-action
+        with:
+          use-coverage-report: true
+          coverage-artifact-name: coverage-report
+          coverage-artifact-path: coverage/coverage-summary.json
+      - id: git-diff
+        uses: rodrigo-md/pull-request-visualizer-action/git-diff@testing-action
+        with:
+          source-branch: ${{ github.head_ref }}
+          target-branch: ${{ github.base_ref }}
+      - run: echo ${{steps.git-diff.outputs.diff-summary}}
