@@ -25,3 +25,9 @@ jobs:
           use-coverage-report: true
           coverage-artifact-name: coverage-report
           coverage-artifact-path: coverage/coverage-summary.json
+      - id: git-diff
+        uses: rodrigo-md/pull-request-visualizer-action/git-diff@testing-action
+        with:
+          source-branch: ${{ github.head_ref }}
+          target-branch: ${{ github.base_ref }}
+      - run: echo ${{steps.git-diff.outputs.diff-summary}}
